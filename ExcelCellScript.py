@@ -6,14 +6,52 @@ import openpyxl
 
 
 class Excel:
-    def __init__(self, dataT, dataE, count):
+    def __init__(self, dataT, dataE, cell_name, count):
         self.dataT = ""
         self.dataE = ""
+        self.cell_name = ""
         self.count = 0
 
 
+def main():
+    window = tk.Tk()
+    window.title("Excel reader script")
+    window.geometry("200x200")
+    window.resizable(width=False, height=False)
+    canvas = tk.Canvas(window, height=400, width=300)
+    canvas.pack()
+    frame = tk.Frame(window)
+    frame.place(relheight=1, relwidth=1)
+    Excel.count = 0
+    btn_excelFile = tk.Button(frame, text="Выбери excel", command=file_read_e)
+    btn_excelFile.pack(anchor="n", padx=10, pady=5)
+    btn_txtFile = tk.Button(frame, text="Выбери txt файл", command=file_read_t)
+    btn_txtFile.pack(anchor="n", padx=10, pady=10)
+    lbl_name = tk.Label(frame, text="Введи номер ячейки:")
+    lbl_name.pack(anchor="n", padx=10, pady=2)
+    Excel.cell_name = tk.Entry(frame)
+    Excel.cell_name.pack(anchor="n", padx=10, pady=2)
+    btn_confirm = tk.Button(frame, text="Выполнить", command=write_adds)
+    btn_confirm.pack(anchor="n", padx=10, pady=15)
+
+    window.mainloop()
+
+
+def file_read_e():
+    Excel.dataE = askopenfilename(defaultextension="xlsx")
+    if not Excel.dataE or not "*.xlsx":
+        showwarning("Предупреждение", "Не выбрана таблица")
+
+
+def file_read_t():
+    Excel.dataT = askopenfilename(defaultextension="txt")
+    Excel.count = 1
+    if not Excel.dataT or not "*.txt":
+        showwarning("Предупреждение", "Не выбран текстовый файл")
+
+
 def write_adds():
-    ent_cell = ent_c.get()
+    ent_cell = Excel.cell_name.get()
     if Excel.count == 1:
         write_file_adds(ent_cell)
     else:
@@ -53,37 +91,5 @@ def write_file_adds(ent_cell):
     Excel.dataT = None
 
 
-def file_read_e():
-    Excel.dataE = askopenfilename(defaultextension="xlsx")
-    if not Excel.dataE or not "*.xlsx":
-        showwarning("Предупреждение", "Не выбрана таблица")
-
-
-def file_read_t():
-    Excel.dataT = askopenfilename(defaultextension="txt")
-    Excel.count = 1
-    if not Excel.dataT or not "*.txt":
-        showwarning("Предупреждение", "Не выбран текстовый файл")
-
-
-window = tk.Tk()
-window.title("Excel reader script")
-window.geometry("200x200")
-window.resizable(width=False, height=False)
-canvas = tk.Canvas(window, height=400, width=300)
-canvas.pack()
-frame = tk.Frame(window)
-frame.place(relheight=1, relwidth=1)
-Excel.count = 0
-btn_excelFile = tk.Button(frame, text="Выбери excel", command=file_read_e)
-btn_excelFile.pack(anchor="n", padx=10, pady=5)
-btn_txtFile = tk.Button(frame, text="Выбери txt файл", command=file_read_t)
-btn_txtFile.pack(anchor="n", padx=10, pady=10)
-lbl_name = tk.Label(frame, text="Введи номер ячейки:")
-lbl_name.pack(anchor="n", padx=10, pady=2)
-ent_c = tk.Entry(frame)
-ent_c.pack(anchor="n", padx=10, pady=2)
-btn_confirm = tk.Button(frame, text="Выполнить", command=write_adds)
-btn_confirm.pack(anchor="n", padx=10, pady=15)
-
-window.mainloop()
+if __name__ == "__main__":
+    main()
