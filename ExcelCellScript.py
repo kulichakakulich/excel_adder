@@ -58,10 +58,15 @@ def write_adds():
         write_oak(ent_cell)
 
 
-def write_oak(ent_cell):
+def load_workbook():
     path = Excel.dataE
     wb = openpyxl.load_workbook(path)
     sheets = wb.worksheets
+    return path, wb, sheets
+
+
+def write_oak(ent_cell):
+    path, wb, sheets = load_workbook()
     for sheet, i in zip(
             sheets, range(150)):
         sheet[f"{ent_cell}"] = None
@@ -71,9 +76,7 @@ def write_oak(ent_cell):
 
 
 def write_file_adds(ent_cell):
-    path = Excel.dataE
-    wb = openpyxl.load_workbook(path)
-    sheets = wb.worksheets
+    path, wb, sheets = load_workbook()
     data = []
     with open(Excel.dataT, "r+", encoding="utf-8") as f:
         data = [line.rstrip('\n') for line in f]
