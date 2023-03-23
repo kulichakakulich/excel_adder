@@ -71,10 +71,10 @@ def main():
     exc = Excel()
 
     btn_excelFile = tk.Button(
-        frame, text="Выбери excel", command=exc.file_read_e)
+        frame, text="Выберите excel", command=exc.file_read_e)
     btn_excelFile.pack(anchor="n", padx=10, pady=5)
     btn_txtFile = tk.Button(
-        frame, text="Выбери txt файл", command=exc.file_read_t)
+        frame, text="Выберите txt файл", command=exc.file_read_t)
     btn_txtFile.pack(anchor="n", padx=10, pady=10)
 
     lbl_name = tk.Label(frame, text="Введи номер ячейки:")
