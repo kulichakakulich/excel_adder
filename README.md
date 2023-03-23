@@ -7,7 +7,7 @@ This script is designed to read an Excel file and add data from a text file to s
 2. Install the openpyxl library by running the following command in your terminal:
 
 ```sh
-pip install openpyxl
+pip install -r requirements.txt
 ```
 
 ### Usage
