@@ -77,7 +77,7 @@ def main():
         frame, text="Выберите txt файл", command=exc.file_read_t)
     btn_txtFile.pack(anchor="n", padx=10, pady=10)
 
-    lbl_name = tk.Label(frame, text="Введи номер ячейки:")
+    lbl_name = tk.Label(frame, text="Введите номер ячейки:")
     lbl_name.pack(anchor="n", padx=10, pady=2)
     cell_lbl_name = tk.Entry(frame)
     cell_lbl_name.pack(anchor="n", padx=10, pady=2)
