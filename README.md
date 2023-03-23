@@ -21,7 +21,7 @@ pip install -r requirements.txt
 python excel_reader.py
 ```
 
-4. The GUI window will appear. Click the "Выбери excel" button to select the Excel file you want to manipulate.
+4. The GUI window will appear. Click the "Выберите excel" button to select the Excel file you want to manipulate.
 
 5. Click the "Выберите txt файл" button to select the text file containing the data you want to add to the Excel file.
 
