@@ -49,8 +49,8 @@ class Excel:
         if len(data) > 2:
             for sheet, i in zip(
                     sheets, data):
-                sheet[f"{ent_cell}"] = None
-                sheet[f"{ent_cell}"] = i
+                sheet[ent_cell] = None
+                sheet[ent_cell] = i
             wb.save(self.dataE)
             showinfo("Выполнено", "Данные записаны в файл")
         else:
